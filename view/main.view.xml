@@ -1,0 +1,382 @@
+<mvc:View xmlns:table = "sap.ui.table" 
+controllerName  = "prjbr.controller.main"
+xmlns:c="sap.ui.core"
+xmlns:mvc              = "sap.ui.core.mvc" 
+displayBlock = "true"
+              xmlns             = "sap.m">
+<Page         id                = "page" title= "{i18n>title}">
+<ObjectHeader 
+title= "{ModeloDadosGerais>/nome_popular}"
+number= "{ModeloDadosGerais>/rodada_atual/rodada}"
+numberUnit= "Rodada" />
+   
+    
+    <IconTabBar>
+        <items>
+        <IconTabFilter 
+            text = "Classificação"
+            key  = "classificacao"
+            icon = "sap-icon://competitor">
+
+            <!-- tabela -->
+             
+            <!-- Posição -->
+                <Table items="{ModeloClassificacao>/Classificacao}">
+                    <columns>
+                        <Column>
+                            <Text text = "Posição"></Text>
+                        </Column>
+                    
+                
+            
+            <!-- escudo -->
+                    <Column>
+                        <Text text = ""></Text>
+                    </Column>
+                
+            
+             <!-- time -->
+                    <Column>
+                        <Text text = "Time"></Text>
+                    </Column>
+           
+               
+            <!-- pontos -->
+            
+                    <Column>
+                        <Text text = "PTs"></Text>
+                    </Column>
+               
+
+            <!-- partidas jogadas -->
+           
+                    <Column>
+                        <Text text = "PJ"></Text>
+                    </Column>
+                
+
+            <!-- Vitorias -->
+           
+                    <Column>
+                        <Text text = "VT"></Text>
+                    </Column>
+                
+
+            <!-- empates -->
+            
+                    <Column>
+                        <Text text = "E"></Text>
+                    </Column>
+                
+
+            <!-- derrotas -->
+            
+                    <Column>
+                        <Text text = "Dt"></Text>
+                    </Column>
+                
+
+            <!-- Gol marcado -->
+           
+                    <Column>
+                        <Text text = "GM"></Text>
+                    </Column>
+                
+
+            <!-- Gol levado -->
+           
+                    <Column>
+                        <Text text = "GL"></Text>
+                    </Column>
+                
+
+            <!-- saldo de gol -->
+            
+                    <Column>
+                        <Text text = "SG"></Text>
+                    </Column>
+               </columns>
+                
+               <items>
+               <!-- 1ªlinha -->
+               <ColumnListItem >
+                <cells>
+                    <!-- 1ª coluna posição -->
+                     <Text text = "{ModeloClassificacao>posicao}"></Text>
+                      
+                     <!-- 2ª coluna escudo -->
+                      <Image width = "25%"
+                             src   ="{ModeloClassificacao>time/escudo}" ></Image>
+                       
+                      <!-- 3ª coluna time -->
+                     <Text text = "{ModeloClassificacao>time/nome_popular}"></Text>
+                      
+                     <!-- 4ª coluna pontos -->
+                      <Text text = "{ModeloClassificacao>pontos}"></Text>
+                      
+                      <!-- 5ª coluna jogos -->
+                     <Text text = "{ModeloClassificacao>jogos}"></Text>
+                      
+                     <!-- 6ª coluna vitoria-->
+                      <Text text =  "{ModeloClassificacao>vitorias}"></Text>
+                      
+                      <!-- 7ª coluna empate-->
+                     <Text text = "{ModeloClassificacao>empates}"></Text>
+                      
+                     <!-- 8ª coluna derrota-->
+                      <Text text = "{ModeloClassificacao>derrotas}"></Text>
+                       
+                      <!-- 9ª coluna gol marcado-->
+                     <Text text = "{ModeloClassificacao>gols_pro}"></Text>
+                      
+                     <!-- 10ª coluna gol levado-->
+                      <Text text = "{ModeloClassificacao>gols_contra}"></Text>
+                      
+                      <!-- 11ª coluna saldo de gol-->
+                     <Text text = "{ModeloClassificacao>saldo_gols}"></Text>
+               
+                    </cells>
+               </ColumnListItem>
+            </items>
+
+               
+                
+            
+                </Table>
+           
+            </IconTabFilter>
+            
+            <IconTabFilter 
+            text = "Partidas"
+            key  = "partidas"
+            icon = "sap-icon://soccer">
+            
+
+            
+                    <Table id="partidasTable" headerText="9ªRodada"
+                        items="{ModeloPartidas>/partidas}"
+                        inset="false"
+                        >
+
+                        
+                        <columns >
+                                <!-- Data -->
+                                <Column>    
+                                    <Text text = "Data"></Text>
+                                </Column>
+
+                                <!-- Casa -->
+                                <Column>    
+                                    <Text text = "Time da Casa"></Text>
+                                </Column>
+
+                                <!-- Escudo Casa -->
+                                <!-- <Column>
+                                    <Text text = ""></Text>
+                                </Column> -->
+
+                                <!-- gols marcados
+                                <Column>
+                                    <Text text = "gols"></Text>
+                                </Column> -->
+
+                                <!-- x -->
+                                <Column>
+                                    <Text text = "informações"></Text>
+                                </Column>
+
+                                <!-- gols marcados
+                                <Column>
+                                    <Text text = "gols"></Text>
+                                </Column> -->
+
+                                <!-- Escudo visitante -->
+                                <!-- <Column>
+                                    <Text text = ""></Text>
+                                </Column> -->
+
+                                <!-- Visitante -->
+                                <Column>
+                                    <Text text = "Time Visitante"></Text>
+                                </Column>
+
+                                
+
+                        </columns>
+                            
+                        <items>
+                                <!-- jogo -->
+                            <ColumnListItem vAlign="Middle" >  
+                                <cells>
+                                    <Text text = "{ModeloPartidas>data_realizacao}"/>
+                                    
+                                    <Image width='25%'
+                                    src   =  "{ModeloPartidas>time_mandante/escudo}"/>
+
+                                    <VBox>
+                                    <Text text = "{ModeloPartidas>placar}"/>
+                                    <Text text = "{ModeloPartidas>hora_realizacao} " />
+                                        <Text text = "{ModeloPartidas>status}" />   
+                                    <Text text = "{ModeloPartidas>estadio/nome_popular}"/>
+                                    </VBox>
+                                    
+                                    <Image width='25%'
+                                    src   = "{ModeloPartidas>time_visitante/escudo}"/>
+                                   
+                                   </cells>
+                            </ColumnListItem>  
+                                    
+                        </items>    
+
+                        
+                                
+                                <!-- 2º jogo
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text = '19/06/2024'></Text>
+                                        
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/9mqMGndwoR9og_Z0uEl2kw_48x48.png"></Image>
+    
+                                        <Text text = 'Atlético-GO'></Text>
+    
+                                        <Text text = '1'></Text>
+    
+                                        <Text text = 'X'></Text>
+    
+                                        <Text text = '2'></Text>
+                                        
+                                        <Text text = 'Criciúma'></Text>
+    
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/u_L7Mkp33uNmFTv3uUlXeQ_48x48.png"></Image>
+                                    </cells>
+                                </ColumnListItem> -->
+
+                                <!-- 3º jogo -->
+                                <!-- <ColumnListItem>
+                                    <cells>
+                                        <Text text = '19/06/2024'></Text>
+                                        
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/4w2Z97Hf9CSOqICK3a8AxQ_48x48.png"></Image>
+    
+                                        <Text text = 'São Paulo'></Text>
+    
+                                        <Text text = '0'></Text>
+    
+                                        <Text text = 'X'></Text>
+    
+                                        <Text text = '1'></Text>
+                                        
+                                        <Text text = 'Cuiabá'></Text>
+    
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/j6U8Rgt_6yyf0Egs9nREXw_48x48.png"></Image>
+                                    </cells>
+                                </ColumnListItem> -->
+
+                                <!-- 4º jogo -->
+                                <!-- <ColumnListItem>
+                                    <cells>
+                                        <Text text = '19/06/2024'></Text>
+                                        
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/JrXw-m4Dov0gE2Sh6XJQMQ_48x48.png"></Image>
+    
+                                        <Text text = 'Juventude'></Text>
+    
+                                        <Text text = '2'></Text>
+    
+                                        <Text text = 'X'></Text>
+    
+                                        <Text text = '0'></Text>
+                                        
+                                        <Text text = 'Vasco da Gama'></Text>
+    
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/hHwT8LwRmYCAGxQ-STLxYA_48x48.png"></Image>
+                                    </cells>
+                                </ColumnListItem> -->
+
+                                <!-- 5º jogo -->
+                                <!-- <ColumnListItem>
+                                    <cells>
+                                        <Text text = '19/06/2024'></Text>
+                                        
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/me10ephzRxdj45zVq1Risg_48x48.png"></Image>
+    
+                                        <Text text = 'Fortaleza'></Text>
+    
+                                        <Text text = '1'></Text>
+    
+                                        <Text text = 'X'></Text>
+    
+                                        <Text text = '0'></Text>
+                                        
+                                        <Text text = 'Grêmio'></Text>
+    
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/Ku-73v_TW9kpex-IEGb0ZA_48x48.png"></Image>
+                                    </cells>
+                                </ColumnListItem> -->
+
+                                <!-- 6º jogo -->
+                                <!-- <ColumnListItem>
+                                    <cells>
+                                        <Text text = '19/06/2024'></Text>
+                                        
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/Tcv9X__nIh-6wFNJPMwIXQ_48x48.png"></Image>
+    
+                                        <Text text = 'Cruzeiro'></Text>
+    
+                                        <Text text = '2'></Text>
+    
+                                        <Text text = 'X'></Text>
+    
+                                        <Text text = '0'></Text>
+                                        
+                                        <Text text = 'Fluminense'></Text>
+    
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/fCMxMMDF2AZPU7LzYKSlig_48x48.png"></Image>
+                                    </cells>
+                                </ColumnListItem> -->
+
+                                <!-- 7º jogo
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text = '19/06/2024'></Text>
+                                        
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/OWVFKuHrQuf4q2Wk0hEmSA_48x48.png"></Image>
+    
+                                        <Text text = 'Internacional'></Text>
+    
+                                        <Text text = '1'></Text>
+    
+                                        <Text text = 'X'></Text>
+    
+                                        <Text text = '0'></Text>
+                                        
+                                        <Text text = 'Corinthians'></Text>
+    
+                                        <Image width='25%'
+                                        src   = "https://ssl.gstatic.com/onebox/media/sports/logos/tCMSqgXVHROpdCpQhzTo1g_48x48.png"></Image>
+                                    </cells>
+                                </ColumnListItem> -->
+                    </Table>
+            
+            </IconTabFilter>
+            
+        
+        </items>
+    </IconTabBar>
+    
+    
+
+</Page>
+</mvc:View>
+
